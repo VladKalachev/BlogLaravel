@@ -24,3 +24,6 @@ Route::controllers([
 
 
 //Route::get('/', 'PostController@index');
+
+
+get('unpublished', ['as' => 'posts.unpublished', 'uses' => 'PostController@unpublished']);

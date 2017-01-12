@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Carbon\Carbon;
 
 class PostController extends Controller {
 
@@ -13,11 +14,25 @@ class PostController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Post $postModel)
 	{
-		$posts = Post::all();
-		
+		//$posts = Post::all();
+		//$posts = Post::latest('id')->get();
+
+		/*$posts = Post::latest('published_at') 
+			->where('published_at', '<=', Carbon::now())
+			->get();*/
+
+		$posts = $postModel->getPublishedPosts();
+
 		return view("post.index", ['posts'=> $posts]);
+	}
+
+	
+	public function unpublished(Post $postModel)
+	{
+		$posts = $postModel->getUnPublishedPosts();
+		return view('post.index', ['posts' => $posts]);
 	}
 
 	/**
