@@ -42,7 +42,7 @@ class PostController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('post.create');
 	}
 
 	/**
@@ -50,9 +50,12 @@ class PostController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Post $postModel, Request $request)
 	{
-		//
+		dd($request->all());
+		$postModel->create($request->all());
+		return redirect()->route('posts');
+
 	}
 
 	/**
