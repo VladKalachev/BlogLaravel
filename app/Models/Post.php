@@ -18,7 +18,7 @@ class Post extends Model {
 			->where('published', '=', 1);
 	}
 
-	public function scoreUnPublished($query)
+	public function scopeUnPublished($query)
 	{
 		$query->where('published_at', '=>', Carbon::now())
 			->orWhere('published', '=', 0);

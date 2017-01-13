@@ -1,6 +1,11 @@
 @extends('app')
 
 @section('content')
+
+	<div>
+		{!! link_to_route('posts', 'published') !!} &nbsp; &nbsp; &nbsp;	{!! link_to_route('posts.unpublished', 'unpublished') !!}  &nbsp; &nbsp; &nbsp; {!! link_to_route('post.create', 'new') !!}
+	</div>
+
 	@foreach($posts as $post)
 	<article class="main">
 		<h2>

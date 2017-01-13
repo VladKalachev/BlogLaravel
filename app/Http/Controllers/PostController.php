@@ -19,13 +19,13 @@ class PostController extends Controller {
 		//$posts = Post::all();
 		//$posts = Post::latest('id')->get();
 
-		/*$posts = Post::latest('published_at') 
-			->where('published_at', '<=', Carbon::now())
-			->get();*/
+		//$posts = Post::latest('published_at') 
+		//	->where('published_at', '<=', Carbon::now())
+		//	->get();
 
 		$posts = $postModel->getPublishedPosts();
 
-		return view("post.index", ['posts'=> $posts]);
+		return view('post.index', ['posts'=> $posts]);
 	}
 
 	
